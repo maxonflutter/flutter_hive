@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
+import 'package:equatable/equatable.dart';
 
 part 'movie_model.g.dart';
 
@@ -12,32 +12,32 @@ class Movie extends Equatable with HiveObjectMixin {
   final String name;
 
   @HiveField(2)
+  final String imageUrl;
+
+  @HiveField(3)
   final bool addedToWatchlist;
 
   Movie({
     required this.id,
     required this.name,
+    required this.imageUrl,
     required this.addedToWatchlist,
   });
 
   Movie copyWith({
     String? id,
     String? name,
+    String? imageUrl,
     bool? addedToWatchlist,
   }) {
     return Movie(
       id: id ?? this.id,
       name: name ?? this.name,
+      imageUrl: imageUrl ?? this.imageUrl,
       addedToWatchlist: addedToWatchlist ?? this.addedToWatchlist,
     );
   }
 
-  static List<Movie> movies = [
-    Movie(id: '0', name: 'Movie 1', addedToWatchlist: false),
-    Movie(id: '1', name: 'Movie 2', addedToWatchlist: false),
-    Movie(id: '2', name: 'Movie 3', addedToWatchlist: false),
-  ];
-
   @override
-  List<Object?> get props => [id, name, addedToWatchlist];
+  List<Object?> get props => [id, name, imageUrl, addedToWatchlist];
 }

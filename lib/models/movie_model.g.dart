@@ -19,19 +19,22 @@ class MovieAdapter extends TypeAdapter<Movie> {
     return Movie(
       id: fields[0] as String,
       name: fields[1] as String,
-      addedToWatchlist: fields[2] as bool,
+      imageUrl: fields[2] as String,
+      addedToWatchlist: fields[3] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Movie obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
+      ..write(obj.imageUrl)
+      ..writeByte(3)
       ..write(obj.addedToWatchlist);
   }
 
