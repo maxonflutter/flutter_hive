@@ -12,20 +12,32 @@ class Movie extends Equatable with HiveObjectMixin {
   final String name;
 
   @HiveField(2)
-  final bool isInWatchlist;
+  final bool addedToWatchlist;
 
   Movie({
     required this.id,
     required this.name,
-    required this.isInWatchlist,
+    required this.addedToWatchlist,
   });
 
+  Movie copyWith({
+    String? id,
+    String? name,
+    bool? addedToWatchlist,
+  }) {
+    return Movie(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      addedToWatchlist: addedToWatchlist ?? this.addedToWatchlist,
+    );
+  }
+
   static List<Movie> movies = [
-    Movie(id: '0', name: 'Movie 1', isInWatchlist: false),
-    Movie(id: '1', name: 'Movie 2', isInWatchlist: false),
-    Movie(id: '2', name: 'Movie 3', isInWatchlist: false),
+    Movie(id: '0', name: 'Movie 1', addedToWatchlist: false),
+    Movie(id: '1', name: 'Movie 2', addedToWatchlist: false),
+    Movie(id: '2', name: 'Movie 3', addedToWatchlist: false),
   ];
 
   @override
-  List<Object?> get props => [id, name, isInWatchlist];
+  List<Object?> get props => [id, name, addedToWatchlist];
 }

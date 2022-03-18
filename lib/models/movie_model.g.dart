@@ -19,7 +19,7 @@ class MovieAdapter extends TypeAdapter<Movie> {
     return Movie(
       id: fields[0] as String,
       name: fields[1] as String,
-      isInWatchlist: fields[2] as bool,
+      addedToWatchlist: fields[2] as bool,
     );
   }
 
@@ -32,7 +32,7 @@ class MovieAdapter extends TypeAdapter<Movie> {
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.isInWatchlist);
+      ..write(obj.addedToWatchlist);
   }
 
   @override
